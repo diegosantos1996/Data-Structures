@@ -1,0 +1,50 @@
+1. Stack is a LIFO (Last-in First-Out) in terms of order.
+2. Shows you how pop and append actuall works
+
+
+
+class Stack():
+
+    def __init__(self):
+      self.n = []
+      # You initialize 
+    
+    def add(self,item):
+      return self.n.append(item)
+    
+    def delete(self):
+      return self.n.pop()
+    
+    def print(self):
+      return self.n
+    
+    def length(self):
+      return len(self.n)
+      
+    def peak(self):
+      if len(self) > 0:
+        return self.n[-1]
+      else:
+        return 'List is Empty'
+        
+# Example set-up
+
+Line 1 : example = Stack()
+      # intializes your variable into stack, in this case the variable is 'example'
+Line 2 : example.add(1)
+     # adds 1 into the list
+Line 3 : example.print()
+         [1]
+     #prints you the list and its contents
+Line 4 : example.length()
+          1
+     #shows you the current length of the list
+Line 5 : example.delete()
+         1
+     # returns to you the value removed from you list, which in this case is the last element in your list
+Line 6 : example.peak()
+         List is Empty
+     # shows you the last element, if the length of the list is greater than 0, if it is 0 returns the string 'List is Empty'
+
+      
+    
