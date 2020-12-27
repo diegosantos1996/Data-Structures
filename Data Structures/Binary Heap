@@ -1,0 +1,75 @@
+# from pythonds
+
+class BinHeap:
+        
+  def __init__(self):   # Creates the list, you start with 0 as a place holder, instantiates a 
+    self.heaplist = [0]
+    self.currentSize = 0
+
+
+# Adding an element and adjusting up
+    
+'''
+This function will make all the necessary adjustments to the element in the subtree of which it is placed in. Changing them if the new element in its
+node position is lesser than the value of its parent.
+'''
+
+  def fix_up(self,i):
+    while i//2 > 0 and self.heaplist[i] < self.heaplist[i//2]:
+      self.heaplist[i], self.heaplist[i//2] = self.heaplist[i//2], self/heaplist[i]
+      i = i//2
+      
+'''
+Call this function if you want to add an element. It will then call in the 'fix' function to then make the necessary adjustments.
+'''
+      
+  def append_(self,k):
+    self.heaplist.append(k)
+    self.currentSize += 1
+    self.fix_up(self.currentSize)
+  
+'''
+----------------------------
+'''
+
+# Fixing an element down
+
+  def fix_down(self,i):
+    while (i*2) <= self.currentSize:
+      mc = self.minChild(i)
+      if self.heaplist[i] > self.heaplist[mc]:
+        self.heaplist[i], self.heaplist[mc] = self.heaplist[mc] , self,heaplist[i]
+      i = mc
+  
+  def minChild(self,i):
+    if i*2+1 > self.currentSize:
+      return i*2
+    else:
+      if self.heaplist[i*2] < self.heaplist[i*2+1]:
+        return i * 2
+      else:
+        return i*2 + 1
+  
+'''
+-----------------------------
+'''
+  
+  
+  def delMin(self):
+    retval= self.heaplist[1]
+    self.heaplist[1] = self.heaplist[self.currentSize]
+    self.currentSize -= 1
+    self.heaplist.pop()
+    self.fix_down(1)
+    return retval
+  
+  def build_heap(self, alist):
+    i = len(alist)//2
+    self.currentSize = len(alist)
+    self.heaplist = [0] + alist[:]
+    while (i>0):
+      self.fix_down(i)
+      i = i-1
+  
+      
+    
